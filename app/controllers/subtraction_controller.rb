@@ -1,14 +1,31 @@
-class subtraction_controller < ApplicationController
-  def show_subtraction_form
-    render({ :template => "subtraction_templates/subtraction_form" })
+class SubtractionController < ApplicationController
+  def subtraction_form
+    render({ :template => "subtraction_templates/subtraction_form"})
   end
 
-  def subtract_these
-    @first_number = params.fetch("first_num").to_f
-    @second_number = params.fetch("second_num").to_f
+  def subtract
+    render({ :template => "subtraction_templates/subtraction_form"})
 
-    @result =  @second_number - @first_number
-
-    render({ :template => "subtraction_templates/subtract_results" })
   end
+
+  def wizard_subtract
+    @first_number = params["first_number"].to_f
+    @second_number = params["second_number"].to_f
+
+    @result = @first_number - @second_number
+
+    render({ :template => "subtraction_templates/subtraction_results"})
+  end
+
+  def subtraction_result
+
+    @first_number = params["first_number"].to_f
+    @second_number = params["second_number"].to_f
+
+    @result = @first_number - @second_number
+
+    render({ :template => "subtraction_templates/subtraction_results"})
+  end
+  
+
 end
